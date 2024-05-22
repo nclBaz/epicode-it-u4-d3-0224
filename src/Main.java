@@ -1,6 +1,8 @@
 import entities.Circle;
 import entities.Student;
 
+import java.util.Arrays;
+
 public class Main {
 	public static void main(String[] args) {
 		// Creo un nuovo studente
@@ -39,6 +41,27 @@ public class Main {
 		System.out.println("L'attributo statico di student è: " + Student.school); // Essendo statico non ho bisogno di creare studenti per leggerlo/scriverlo
 
 		System.out.println(Circle.calculateArea(50));
+
+		// ------------------------- COMPARARE 2 OGGETTI ------------------------------------
+
+		studente1.id = studente2.id;
+		studente1.name = "asdsadsa";
+		studente1.surname = studente2.surname;
+		studente1.isFullStack = studente2.isFullStack;
+
+		if (studente1.equals(studente2)) { // Non si comparano mai con la doppia uguaglianza
+			System.out.println("Gli studenti sono uguali");
+		} else {
+			System.out.println("Sono diversi");
+		}
+
+
+		// ------------------------- STAMPARE OGGETTI IN CONSOLE ------------------------------------
+		System.out.println(studente1); // Per gli oggetti nostri devo crearmi un metodo toString() (NON STATICO)
+		System.out.println(studente2);
+
+		String[] array = {"Ciao", "Mondo"};
+		System.out.println(Arrays.toString(array)); // <-- Per stampare gli array esiste già un metodo (STATICO) .toString() che fa parte della classe Arrays
 	}
 
 }

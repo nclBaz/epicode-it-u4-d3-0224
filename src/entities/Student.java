@@ -1,5 +1,6 @@
 package entities;
 
+import java.util.Objects;
 import java.util.Random;
 
 public class Student {
@@ -65,4 +66,26 @@ public class Student {
 		return "CIAO";
 	}
 
+	@Override
+	public boolean equals(Object o) { // Per poter comparare 2 oggetti devo implementarmi il metodo .equals() perché con == viene effettuato un controllo
+		// Solo se i 2 sono lo stesso oggetto (stessa cella di memoria). Quindi se invece voglio creare una logica che dica che 2 oggetti sono uguali se hanno
+		// stesso nome, stesso cognome, stesso id, ed entrambi sono fullstack, allora posso implementare questa logica nel metodo equals. Per fortuna
+		// intelliJ consente di crearlo in maniera semiautomatica con tasto dx --> generate --> equals() and hashcode()
+		if (this == o) return true;
+		if (o == null || getClass() != o.getClass()) return false;
+		Student student = (Student) o;
+		return id == student.id && isFullStack == student.isFullStack && Objects.equals(name, student.name) && Objects.equals(surname, student.surname);
+	}
+
+	@Override
+	public String toString() { // Anche per quanto riguarda la stampa di oggetti in un println(), il metodo di default non porta risultati soddisfacenti,
+		// quindi possiamo sovrascrivere tale comportamento andando ad implementare il metodo toString()
+		// intelliJ consente di crearlo in maniera semiautomatica con tasto dx --> generate --> toString()
+		return "{" +
+				"id=" + id +
+				", name='" + name + '\'' +
+				", surname='" + surname + '\'' +
+				", isFullStack=" + isFullStack +
+				'}';
+	}
 }
