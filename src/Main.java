@@ -1,5 +1,6 @@
 import entities.Circle;
 import entities.Student;
+import enums.TipoStudente;
 
 import java.util.Arrays;
 
@@ -21,7 +22,7 @@ public class Main {
 		studente4.sayHello();
 		System.out.println(studente4.returnHello());
 
-		System.out.println("Il nome dello studente 4 è: " + studente4.name);
+/*		System.out.println("Il nome dello studente 4 è: " + studente4.name);
 		studente4.name = "Ajeje";
 		System.out.println("Il nome dello studente 4 è: " + studente4.name);
 
@@ -29,7 +30,7 @@ public class Main {
 		Student studente5 = studente4; // Non sto semplicemente copiando le proprietà ma sto creando un riferimento allo stesso oggetto di sopra
 		studente5.name = "Claudio";
 		System.out.println("Il nome dello studente 5 è: " + studente5.name);
-		System.out.println("Il nome dello studente 4 è: " + studente4.name);
+		System.out.println("Il nome dello studente 4 è: " + studente4.name);*/
 
 		// ---------------------- METODI STATICI ---------------------------
 		// Sono metodi che non necessitano della creazione di oggetti per poter essere utilizzati
@@ -44,10 +45,10 @@ public class Main {
 
 		// ------------------------- COMPARARE 2 OGGETTI ------------------------------------
 
-		studente1.id = studente2.id;
+/*		studente1.id = studente2.id;
 		studente1.name = "asdsadsa";
 		studente1.surname = studente2.surname;
-		studente1.isFullStack = studente2.isFullStack;
+		studente1.isFullStack = studente2.isFullStack;*/
 
 		if (studente1.equals(studente2)) { // Non si comparano mai con la doppia uguaglianza
 			System.out.println("Gli studenti sono uguali");
@@ -62,6 +63,23 @@ public class Main {
 
 		String[] array = {"Ciao", "Mondo"};
 		System.out.println(Arrays.toString(array)); // <-- Per stampare gli array esiste già un metodo (STATICO) .toString() che fa parte della classe Arrays
+
+		System.out.println(TipoStudente.valueOf("FULLSTACK"));
+
+		// --------------------------- INCAPSULAMENTO --------------------
+		// Mettendo tutti gli attributi come PUBLIC, vuol dire che questi possono essere scritti/letti
+		// in maniera anche potenzialmente pericolosa (soprattutto la scrittura)
+/*		System.out.println(studente1.name); // <-- Se name è PRIVATE non posso accedervi nè in lettura
+		studente1.name = "Ciccio"; // nè in scrittura*/
+		// Per ovviare a questo problema si creano i metodi GETTER & SETTER
+		// Il getter mi consente di leggere il valore di un attributo
+		// Il setter mi consente di scrivere un nuovo valore per un attributo
+		// Questo mi consente di stabilire quali attributi debbano venir letti/scritti
+		System.out.println(studente1.getId()); // L'id è leggibile...
+		// System.out.println(studente1.setId()); // ...ma non scrivibile perché ho deciso di non mettere il suo setter
+		// Un ulteriore vantaggio dei setter è quello di poter anche ora eseguire della logica prima di sovrascrivere un attributo
+		// Es: se non inserisci un nome più lungo di 3 caratteri non te lo accetto
+
 	}
 
 }

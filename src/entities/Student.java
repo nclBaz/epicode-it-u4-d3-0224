@@ -1,5 +1,7 @@
 package entities;
 
+import enums.TipoStudente;
+
 import java.util.Objects;
 import java.util.Random;
 
@@ -8,10 +10,11 @@ public class Student {
 	// Questa classe non dovrà essere eseguibile; mi servirà solo per definire un modello per stabilire quali siano le caratteristiche di tutti gli Studenti
 
 	// LISTA ATTRIBUTI, ovvero le caratteristiche di uno studente
-	public int id;
-	public String name;
-	public String surname;
-	public boolean isFullStack;
+	private int id;
+	private String name;
+	private String surname;
+	private boolean isFullStack;
+	private TipoStudente tipoStudente; // Se utilizzo un enum restringo i valori possibili solo ad una lista di opzioni --> FRONTEND || BACKEND || FULLSTACK
 
 	// LISTA COSTRUTTORI, ovvero come creerò uno studente, cioè definisco i valori dei suoi attributi
 	// Se non metto nessun costruttore ci sarà quello "vuoto" di default
@@ -23,6 +26,7 @@ public class Student {
 		this.name = "Nome di default";
 		this.surname = "Cognome di default";
 		this.isFullStack = true;
+		this.tipoStudente = TipoStudente.FULLSTACK;
 	}
 
 	// II Costruttore
@@ -88,4 +92,35 @@ public class Student {
 				", isFullStack=" + isFullStack +
 				'}';
 	}
+
+	public int getId() {
+		return id;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		if (name.length() >= 3) // Un ulteriore vantaggio dei setter è quello di poter anche ora eseguire della logica prima di sovrascrivere un attributo
+			this.name = name;
+	}
+
+	public String getSurname() {
+		return surname;
+	}
+
+	public void setSurname(String surname) {
+		this.surname = surname;
+	}
+
+	public boolean isFullStack() {
+		return isFullStack;
+	}
+
+	public void setFullStack(boolean fullStack) {
+		isFullStack = fullStack;
+	}
+
+
 }
